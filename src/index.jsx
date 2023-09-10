@@ -9,6 +9,8 @@ import { Header } from './components/header';
 import { SideMenu } from './components/side-menu';
 import sideLinks from './data/sideLinks';
 import links from './data/links';
+import { Production } from './pages/production';
+import * as Styled from './styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,13 +18,13 @@ root.render(
     <BrowserRouter>
       <GlobalStyles />
       <Header links={links} />
-      <div style={{ display: 'flex' }}>
+      <Styled.compStyle>
         <SideMenu sideLinks={sideLinks} />
         <Routes>
-          <Route path="/" element={<p>home</p>} />
+          <Route path="/" element={<Production />} />
           <Route path="/verbas" element={<p>verbas</p>} />
         </Routes>
-      </div>
+      </Styled.compStyle>
     </BrowserRouter>
   </ThemeProvider>,
 );

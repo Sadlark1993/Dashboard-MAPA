@@ -8,7 +8,7 @@ export const compStyle = styled.div`
     justify-content: space-between;
     align-content: end;
     gap: ${theme.spacings.default};
-    width: 25rem;
+    width: 100%;
     padding: 6rem ${theme.spacings.default} 2rem 0;
     text-align: end;
     border-right: solid 0.1rem ${theme.colors.primaryColor};

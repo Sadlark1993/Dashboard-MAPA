@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
   body{
     font-size: ${theme.fonts.sizes.small};
     font-family: ${theme.fonts.family.primaryFont};
+    color: ${theme.colors.primaryColor};
   }
 
 `;

@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components';
 
 export const compStyle = styled.div`
   ${({ theme }) => css`
-    width: 100%;
-    & h1 {
-      text-align: center;
-      margin: 0 auto;
-      display: block;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
   `}
 `;
