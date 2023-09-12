@@ -4,7 +4,7 @@ import { ChartBox } from '../../components/chart-box';
 import * as Styled from './styles';
 import { Dashboard } from '../../components/dashboard';
 import agroProduction from '../../data/agroProduction';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from '../../context/ProductionValue';
 
 export const Production = () => {

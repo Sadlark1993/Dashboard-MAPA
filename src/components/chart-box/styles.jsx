@@ -27,3 +27,11 @@ export const titleContainer = styled.div`
   display: flex;
   gap: 1rem;
 `;
+
+export const percent = styled.span`
+  ${({ theme, growth }) => css`
+    color: ${growth > 0 ? '#02AB47' : '#FF6347'};
+    font-weight: bold;
+    font-size: ${theme.fonts.sizes.large};
+  `}
+`;

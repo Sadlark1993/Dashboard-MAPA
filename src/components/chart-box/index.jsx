@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { LineChart, Line, Tooltip } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis } from 'recharts';
 
 import * as Styled from './styles';
 
 export const ChartBox = ({ imgSrc, title, year, value, data }) => {
-  console.log(Object.keys(data[0])[1]);
   return (
     <Styled.compStyle>
       <Styled.halfContainer>
@@ -19,14 +18,26 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
         <a href="#">ver tudo</a>
       </Styled.halfContainer>
       <Styled.halfContainer>
-        <LineChart width={100} height={100} data={data}>
-          <Tooltip />
-          <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
-        </LineChart>
-        <span>X%</span>
+        {data.length > 1 && (
+          <LineChart width={100} height={100} data={data}>
+            <Tooltip position={{ x: 30, y: 80 }} />
+            <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
+            <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
+          </LineChart>
+        )}
+        <Styled.percent growth={growthCalc(data)}>{growthCalc(data)}%</Styled.percent>
       </Styled.halfContainer>
     </Styled.compStyle>
   );
+};
+
+const growthCalc = (data) => {
+  if (data.length > 1) {
+    const before = Object.values(data[data.length - 2])[1];
+    const after = Object.values(data[data.length - 1])[1];
+    const growth = Math.round(((after - before) / before) * 100);
+    return growth > 0 ? `+${growth}` : `-${growth}`;
+  }
 };
 
 ChartBox.propTypes = {

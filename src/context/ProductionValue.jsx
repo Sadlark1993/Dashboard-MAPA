@@ -31,7 +31,7 @@ const formatData = (obj) => {
   for (const key in obj) {
     chartArray.push({ name: key, 'Produção Agro': obj[key] });
   }
-  console.log(chartArray);
+  //console.log(chartArray);
   return chartArray;
 };
 
