@@ -11,16 +11,27 @@ export const compStyle = styled.div`
       width: 3rem;
       height: 3.2rem;
     }
+
+    & a {
+      font-size: ${theme.fonts.sizes.xsmall};
+      color: #1351b4;
+      font-weight: bold;
+    }
   `}
 `;
 
 export const halfContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  & span {
-    text-align: right;
-  }
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & dt,
+    dd {
+      font-weight: bold;
+      font-size: ${theme.fonts.sizes.xsmall};
+      margin-bottom: 1rem;
+    }
+  `}
 `;
 
 export const titleContainer = styled.div`

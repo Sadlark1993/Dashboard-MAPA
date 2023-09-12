@@ -13,7 +13,7 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
         </Styled.titleContainer>
         <div>
           <dt>{year}:</dt>
-          <dd>{value}</dd>
+          <dd>R$ {Math.round(value / 1000000)} milhões</dd>
         </div>
         <a href="#">ver tudo</a>
       </Styled.halfContainer>
