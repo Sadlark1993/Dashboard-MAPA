@@ -4,7 +4,7 @@ import { createContext, useEffect, useState } from 'react';
 export const DataContext = createContext();
 
 export const ProductionValue = ({ children }) => {
-  const [agroValue, setAgroValue] = useState({});
+  const [agroValue, setAgroValue] = useState([{ 2000: 1 }]);
 
   useEffect(() => {
     (async () => {
@@ -12,8 +12,10 @@ export const ProductionValue = ({ children }) => {
         'https://servicodados.ibge.gov.br/api/v3/agregados/5457/periodos/2017%7C2018%7C2019%7C2020%7C2021/variaveis/215?localidades=N1[all]&classificacao=782[0]',
       );
       const agroValueObj = await agroValuePromise.json();
-      console.log(agroValueObj[0].resultados[0].series[0].serie);
-      setAgroValue(agroValueObj[0].resultados[0].series[0].serie);
+      /*       console.log(agroValueObj[0].resultados[0].series[0].serie);
+      setAgroValue(agroValueObj[0].resultados[0].series[0].serie); */
+      const chartArray = formatData(agroValueObj[0].resultados[0].series[0].serie);
+      setAgroValue(chartArray);
     })();
   }, []);
 
@@ -24,7 +26,16 @@ ProductionValue.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-/*
+const formatData = (obj) => {
+  const chartArray = [];
+  for (const key in obj) {
+    chartArray.push({ name: key, 'Produção Agro': obj[key] });
+  }
+  console.log(chartArray);
+  return chartArray;
+};
+
+/* //content of the object from the API:
   [
     {
       "id": "215",

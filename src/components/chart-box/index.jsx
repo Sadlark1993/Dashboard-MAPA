@@ -4,6 +4,7 @@ import { LineChart, Line, Tooltip } from 'recharts';
 import * as Styled from './styles';
 
 export const ChartBox = ({ imgSrc, title, year, value, data }) => {
+  console.log(Object.keys(data[0])[1]);
   return (
     <Styled.compStyle>
       <Styled.halfContainer>
@@ -20,7 +21,7 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
       <Styled.halfContainer>
         <LineChart width={100} height={100} data={data}>
           <Tooltip />
-          <Line dot={false} type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+          <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
         </LineChart>
         <span>X%</span>
       </Styled.halfContainer>
