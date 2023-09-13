@@ -5,7 +5,6 @@ export const compStyle = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-between;
     align-content: end;
     gap: ${theme.spacings.default};
     width: 100%;

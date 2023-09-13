@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { LineChart, Line, Tooltip, XAxis } from 'recharts';
+import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 
 import * as Styled from './styles';
 
@@ -19,11 +19,13 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
       </Styled.halfContainer>
       <Styled.halfContainer>
         {data.length > 1 && (
-          <LineChart width={100} height={100} data={data}>
-            <Tooltip position={{ x: 30, y: 80 }} />
-            <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
-            <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
-          </LineChart>
+          <ResponsiveContainer width={'99%'} height={'50%'}>
+            <LineChart width={100} height={100} data={data}>
+              <Tooltip position={{ x: 30, y: 80 }} />
+              <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
+              <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
+            </LineChart>
+          </ResponsiveContainer>
         )}
         <Styled.percent growth={growthCalc(data)}>{growthCalc(data)}%</Styled.percent>
       </Styled.halfContainer>

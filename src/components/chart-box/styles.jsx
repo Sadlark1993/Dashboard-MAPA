@@ -25,6 +25,7 @@ export const halfContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 1 1 0%;
     & dt,
     dd {
       font-weight: bold;

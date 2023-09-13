@@ -8,5 +8,14 @@ export const compStyle = styled.div`
       margin: 0 auto;
       display: block;
     }
+
+    & h1::after {
+      content: ' ';
+      display: block;
+      background-color: ${theme.colors.primaryColor};
+      margin: 1.2rem auto 2rem auto;
+      height: 0.3rem;
+      width: 6rem;
+    }
   `}
 `;

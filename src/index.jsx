@@ -25,6 +25,7 @@ root.render(
           <Routes>
             <Route path="/" element={<Production />} />
             <Route path="/verbas" element={<p>verbas</p>} />
+            <Route path="/empregos" element={<p>empregos mantidos</p>} />
           </Routes>
         </Styled.compStyle>
       </BrowserRouter>
