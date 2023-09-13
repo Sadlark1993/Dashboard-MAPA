@@ -38,6 +38,4 @@ export const SelectionBox = () => {
   );
 };
 
-SelectionBox.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+SelectionBox.propTypes = {};

@@ -38,7 +38,7 @@ const growthCalc = (data) => {
     const before = Object.values(data[data.length - 2])[1];
     const after = Object.values(data[data.length - 1])[1];
     const growth = Math.round(((after - before) / before) * 100);
-    return growth > 0 ? `+${growth}` : `-${growth}`;
+    return growth > 0 ? `+${growth}` : `${growth}`;
   }
 };
 

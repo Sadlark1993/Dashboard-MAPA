@@ -40,6 +40,30 @@ export const Production = () => {
           value={743327068000}
           data={agroProduction}
         />
+
+        <ChartBox
+          imgSrc="./dist/img/tractor-green.svg"
+          title="Valor da Produção Agrícola."
+          year={2021}
+          value={743327068000}
+          data={agroProduction}
+        />
+
+        <ChartBox
+          imgSrc="./dist/img/tractor-green.svg"
+          title="Valor da Produção Agrícola."
+          year={2021}
+          value={743327068000}
+          data={agroProduction}
+        />
+
+        <ChartBox
+          imgSrc="./dist/img/tractor-green.svg"
+          title="Valor da Produção Agrícola."
+          year={2021}
+          value={743327068000}
+          data={agroProduction}
+        />
       </Dashboard>
     </Styled.compStyle>
   );

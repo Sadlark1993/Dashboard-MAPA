@@ -6,6 +6,8 @@ export const compStyle = styled.div`
     border-radius: 1rem;
     padding: 1.2rem;
     height: 50.4rem;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
 
     & h4 {
       margin-top: 2rem;

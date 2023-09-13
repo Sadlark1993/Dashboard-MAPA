@@ -6,7 +6,6 @@ export const compStyle = styled.div`
     border-radius: 1rem;
     padding: 1.2rem;
     display: flex;
-    height: 24.5rem;
     & img {
       width: 3rem;
       height: 3.2rem;
