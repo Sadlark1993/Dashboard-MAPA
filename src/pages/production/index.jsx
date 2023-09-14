@@ -4,12 +4,26 @@ import { ChartBox } from '../../components/chart-box';
 import * as Styled from './styles';
 import { Dashboard } from '../../components/dashboard';
 import agroProduction from '../../data/agroProduction';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DataContext } from '../../context/ProductionValue';
 import { SelectionBox } from '../../components/selection-box';
+import { PieChartBox } from '../../components/pie-chart-box';
 
 export const Production = () => {
+  const [pieChartVisible, setPieChartVisible] = useState(false);
   const { agroValue } = useContext(DataContext);
+  const chartPieRef = useRef();
+  const observer = useRef(
+    new IntersectionObserver(([entry]) => (entry.isIntersecting ? setPieChartVisible(true) : '')),
+  );
+
+  useEffect(() => {
+    document.addEventListener('scrollend', observer.current.observe(chartPieRef.current));
+  }, []);
+
+  useEffect(() => {
+    if (pieChartVisible) document.removeEventListener('scrollend', () => observer.observe(chartPieRef.current));
+  }, [pieChartVisible, observer]);
 
   //console.log(agroValue);
   return (
@@ -64,6 +78,13 @@ export const Production = () => {
           value={743327068000}
           data={agroProduction}
         />
+
+        {useMemo(
+          () => (
+            <PieChartBox forwardedRef={chartPieRef} title="Participação no PIB" visible={pieChartVisible} />
+          ),
+          [pieChartVisible],
+        )}
       </Dashboard>
     </Styled.compStyle>
   );

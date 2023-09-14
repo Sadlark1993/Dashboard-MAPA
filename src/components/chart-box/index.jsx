@@ -4,6 +4,7 @@ import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import * as Styled from './styles';
 
 export const ChartBox = ({ imgSrc, title, year, value, data }) => {
+  console.log('render');
   return (
     <Styled.compStyle>
       <Styled.halfContainer>
