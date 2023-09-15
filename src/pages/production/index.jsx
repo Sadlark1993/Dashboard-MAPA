@@ -8,6 +8,7 @@ import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DataContext } from '../../context/ProductionValue';
 import { SelectionBox } from '../../components/selection-box';
 import { PieChartBox } from '../../components/pie-chart-box';
+import gdpComposition from '../../data/gdpComposition';
 
 export const Production = () => {
   const [pieChartVisible, setPieChartVisible] = useState(false);
@@ -81,7 +82,12 @@ export const Production = () => {
 
         {useMemo(
           () => (
-            <PieChartBox forwardedRef={chartPieRef} title="Participação no PIB" visible={pieChartVisible} />
+            <PieChartBox
+              forwardedRef={chartPieRef}
+              title="Participação no PIB em 2022"
+              visible={pieChartVisible}
+              data={gdpComposition}
+            />
           ),
           [pieChartVisible],
         )}
