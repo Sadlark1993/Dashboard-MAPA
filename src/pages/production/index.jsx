@@ -9,6 +9,7 @@ import { DataContext } from '../../context/ProductionValue';
 import { SelectionBox } from '../../components/selection-box';
 import { PieChartBox } from '../../components/pie-chart-box';
 import gdpComposition from '../../data/gdpComposition';
+import { LineChartBox } from '../../components/line-chart-box';
 
 export const Production = () => {
   const [pieChartVisible, setPieChartVisible] = useState(false);
@@ -91,6 +92,8 @@ export const Production = () => {
           ),
           [pieChartVisible],
         )}
+
+        <LineChartBox title="Histórico de Produção Agropecuária" />
       </Dashboard>
     </Styled.compStyle>
   );
