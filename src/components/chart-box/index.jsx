@@ -4,7 +4,21 @@ import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 import * as Styled from './styles';
 
 export const ChartBox = ({ imgSrc, title, year, value, data }) => {
-  console.log('render');
+  const Chart = ({ data }) => {
+    //setTimeout(() => {
+    return (
+      <ResponsiveContainer width={'99%'} height={'50%'}>
+        <LineChart width={100} height={100} data={data}>
+          {console.log('chart')}
+          <Tooltip position={{ x: 30, y: 80 }} />
+          <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
+          <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
+        </LineChart>
+      </ResponsiveContainer>
+    );
+    //}, 500);
+  };
+
   return (
     <Styled.compStyle>
       <Styled.halfContainer>
@@ -19,15 +33,7 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
         <a href="#">ver tudo</a>
       </Styled.halfContainer>
       <Styled.halfContainer>
-        {data.length > 1 && (
-          <ResponsiveContainer width={'99%'} height={'50%'}>
-            <LineChart width={100} height={100} data={data}>
-              <Tooltip position={{ x: 30, y: 80 }} />
-              <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
-              <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
-            </LineChart>
-          </ResponsiveContainer>
-        )}
+        {data.length > 1 && <Chart data={data} />}
         <Styled.percent growth={growthCalc(data)}>{growthCalc(data)}%</Styled.percent>
       </Styled.halfContainer>
     </Styled.compStyle>
