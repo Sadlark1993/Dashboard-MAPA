@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
+import { ThemeSwitcher } from '../theme-switcher';
+import { useState } from 'react';
 
 export const Header = ({ links }) => {
   return (
@@ -11,6 +13,7 @@ export const Header = ({ links }) => {
             {link.name}
           </a>
         ))}
+        <ThemeSwitcher />
       </div>
     </Styled.compStyle>
   );
