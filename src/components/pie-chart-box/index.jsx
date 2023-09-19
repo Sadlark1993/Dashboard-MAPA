@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
+import { useContext } from 'react';
+import { DataContext } from '../../context/ProductionValue';
 
 export const PieChartBox = ({ title, visible, forwardedRef, data }) => {
+  const { themeStyle } = useContext(DataContext);
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   const RADIAN = Math.PI / 180;
@@ -19,7 +22,7 @@ export const PieChartBox = ({ title, visible, forwardedRef, data }) => {
   };
 
   return (
-    <Styled.compStyle ref={forwardedRef}>
+    <Styled.compStyle ref={forwardedRef} themeStyle={themeStyle}>
       <h3>{title}</h3>
 
       {visible && (

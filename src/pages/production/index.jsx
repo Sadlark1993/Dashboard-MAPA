@@ -13,7 +13,7 @@ import { LineChartBox } from '../../components/line-chart-box';
 
 export const Production = () => {
   const [pieChartVisible, setPieChartVisible] = useState(false);
-  const { agroValue } = useContext(DataContext);
+  const { agroValue, themeStyle } = useContext(DataContext);
   const chartPieRef = useRef();
   const observer = useRef(
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? setPieChartVisible(true) : '')),
@@ -29,7 +29,7 @@ export const Production = () => {
 
   //console.log(agroValue);
   return (
-    <Styled.compStyle>
+    <Styled.compStyle themeStyle={themeStyle}>
       <h1>Produção Agropecuária</h1>
       <Dashboard>
         <SelectionBox />

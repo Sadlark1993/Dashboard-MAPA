@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const compStyle = styled.div`
-  ${({ theme }) => css`
-    border: solid 1px ${theme.colors.primaryColor};
+  ${({ theme, themeStyle }) => css`
+    border: solid 1px ${themeStyle.darkTheme ? 'white' : theme.colors.primaryColor};
     border-radius: 1rem;
     padding: 1.2rem;
     display: flex;

@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { DataContext } from '../../context/ProductionValue';
 
 export const SelectionBox = () => {
+  const { themeStyle } = useContext(DataContext);
   const levelRef = useRef();
 
   return (
-    <Styled.compStyle>
+    <Styled.compStyle themeStyle={themeStyle}>
       <h4>Configurar Indicadores</h4>
       <Styled.selectionContent>
         <Styled.inputBlock>

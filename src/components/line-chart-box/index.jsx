@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import * as Styled from './styles';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useContext } from 'react';
+import { DataContext } from '../../context/ProductionValue';
 
 const data = [
   {
@@ -48,8 +50,10 @@ const data = [
 ];
 
 export const LineChartBox = ({ title }) => {
+  const { themeStyle } = useContext(DataContext);
+
   return (
-    <Styled.compStyle>
+    <Styled.compStyle themeStyle={themeStyle}>
       <h3>Histórico de Produção</h3>
 
       <ResponsiveContainer width="100%" height="89%">

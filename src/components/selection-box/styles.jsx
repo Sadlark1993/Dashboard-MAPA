@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 export const compStyle = styled.div`
-  ${({ theme }) => css`
-    border: solid 0.1rem ${theme.colors.primaryColor};
+  ${({ theme, themeStyle }) => css`
+    border: solid 0.1rem ${themeStyle.darkTheme ? 'white' : theme.colors.primaryColor};
     border-radius: 1rem;
     padding: 1.2rem;
     height: 50.4rem;
@@ -19,7 +19,7 @@ export const compStyle = styled.div`
       display: block;
       width: 6rem;
       height: 0.3rem;
-      background: ${theme.colors.primaryColor};
+      background: ${themeStyle.darkTheme ? 'white' : theme.colors.primaryColor};
       margin: 0.85rem auto 2rem auto;
     }
   `}

@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 
 export const compStyle = styled.div`
-  ${({ theme }) => css`
+  ${({ theme, themeStyle }) => css`
     grid-column: span 2;
     height: 400px;
     text-align: center;
-    border: solid 0.1rem ${theme.colors.primaryColor};
+    border: solid 0.1rem ${themeStyle.darkTheme ? 'white' : theme.colors.primaryColor};
     border-radius: 1rem;
     padding: 1.2rem;
   `}

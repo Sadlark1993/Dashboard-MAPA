@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import { LineChart, Line, Tooltip, XAxis, ResponsiveContainer } from 'recharts';
 
 import * as Styled from './styles';
+import { useContext } from 'react';
+import { DataContext } from '../../context/ProductionValue';
 
 export const ChartBox = ({ imgSrc, title, year, value, data }) => {
+  const { themeStyle } = useContext(DataContext);
+
   const Chart = ({ data }) => {
     //setTimeout(() => {
     return (
@@ -20,7 +24,7 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
   };
 
   return (
-    <Styled.compStyle>
+    <Styled.compStyle themeStyle={themeStyle}>
       <Styled.halfContainer>
         <Styled.titleContainer>
           <img src={imgSrc} />

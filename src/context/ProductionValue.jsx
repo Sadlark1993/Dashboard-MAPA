@@ -4,7 +4,13 @@ import { createContext, useEffect, useState } from 'react';
 export const DataContext = createContext();
 
 export const ProductionValue = ({ children }) => {
+  const switchTheme = () => {
+    setThemeStyle((c) => ({ darkTheme: !c.darkTheme, switchTheme }));
+    console.log('theme switched');
+  };
+
   const [agroValue, setAgroValue] = useState([{ 2000: 1 }]);
+  const [themeStyle, setThemeStyle] = useState({ darkTheme: true, switchTheme });
 
   useEffect(() => {
     (async () => {
@@ -19,7 +25,7 @@ export const ProductionValue = ({ children }) => {
     })();
   }, []);
 
-  return <DataContext.Provider value={{ agroValue }}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ agroValue, themeStyle }}>{children}</DataContext.Provider>;
 };
 
 ProductionValue.propTypes = {
