@@ -13,7 +13,7 @@ import { LineChartBox } from '../../components/line-chart-box';
 
 export const Production = () => {
   const [pieChartVisible, setPieChartVisible] = useState(false);
-  const { agroValue, themeStyle } = useContext(DataContext);
+  const { agroValue, soyAmount, cattleAmount, themeStyle } = useContext(DataContext);
   const chartPieRef = useRef();
   const observer = useRef(
     new IntersectionObserver(([entry]) => (entry.isIntersecting ? setPieChartVisible(true) : '')),
@@ -27,7 +27,6 @@ export const Production = () => {
     if (pieChartVisible) document.removeEventListener('scrollend', () => observer.observe(chartPieRef.current));
   }, [pieChartVisible, observer]);
 
-  //console.log(agroValue);
   return (
     <Styled.compStyle themeStyle={themeStyle}>
       <h1>Produção Agropecuária</h1>
@@ -37,48 +36,60 @@ export const Production = () => {
           imgSrc="./dist/img/tractor-green.svg"
           title="Valor da Produção Agrícola"
           year={2021}
-          value={743327068000}
+          value={+agroValue[agroValue.length - 1].valor}
           data={agroValue}
+          prefix="R$ "
+          suffix=" Bilhões"
+        />
+
+        <ChartBox
+          imgSrc="./dist/img/tractor-green.svg"
+          title="Quantidade de soja produzida"
+          year={2022}
+          value={+soyAmount[soyAmount.length - 1].valor}
+          data={soyAmount}
+          prefix=""
+          suffix=" mil toneladas"
+        />
+
+        <ChartBox
+          imgSrc="./dist/img/cow.svg"
+          title="Carcaças dos Bovinos Abatidos"
+          year={2024}
+          value={+cattleAmount[cattleAmount.length - 1].valor}
+          data={cattleAmount}
+          prefix=""
+          suffix=" mil toneladas"
         />
 
         <ChartBox
           imgSrc="./dist/img/tractor-green.svg"
           title="Valor da Produção Agrícola."
           year={2021}
-          value={743327068000}
+          value={743327068}
           data={agroProduction}
+          prefix="R$ "
+          suffix=" Bilhões"
         />
 
         <ChartBox
           imgSrc="./dist/img/tractor-green.svg"
           title="Valor da Produção Agrícola."
           year={2021}
-          value={743327068000}
+          value={743327068}
           data={agroProduction}
+          prefix="R$ "
+          suffix=" Bilhões"
         />
 
         <ChartBox
           imgSrc="./dist/img/tractor-green.svg"
           title="Valor da Produção Agrícola."
           year={2021}
-          value={743327068000}
+          value={743327068}
           data={agroProduction}
-        />
-
-        <ChartBox
-          imgSrc="./dist/img/tractor-green.svg"
-          title="Valor da Produção Agrícola."
-          year={2021}
-          value={743327068000}
-          data={agroProduction}
-        />
-
-        <ChartBox
-          imgSrc="./dist/img/tractor-green.svg"
-          title="Valor da Produção Agrícola."
-          year={2021}
-          value={743327068000}
-          data={agroProduction}
+          prefix="R$ "
+          suffix=" Bilhões"
         />
 
         {useMemo(

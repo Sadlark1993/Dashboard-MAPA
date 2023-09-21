@@ -5,7 +5,7 @@ import * as Styled from './styles';
 import { useContext } from 'react';
 import { DataContext } from '../../context/ProductionValue';
 
-export const ChartBox = ({ imgSrc, title, year, value, data }) => {
+export const ChartBox = ({ imgSrc, title, year, value, data, prefix, suffix }) => {
   const { themeStyle } = useContext(DataContext);
 
   const Chart = ({ data }) => {
@@ -13,10 +13,9 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
     return (
       <ResponsiveContainer width={'99%'} height={'50%'}>
         <LineChart width={100} height={100} data={data}>
-          {console.log('chart')}
           <Tooltip position={{ x: 30, y: 80 }} />
           <XAxis hide={true} dataKey={Object.keys(data[0])[0]} />
-          <Line dot={false} type="monotone" dataKey={Object.keys(data[0])[1]} stroke="#8884d8" strokeWidth={2} />
+          <Line dot={false} type="monotone" dataKey="valor" stroke="#8884d8" strokeWidth={2} />
         </LineChart>
       </ResponsiveContainer>
     );
@@ -32,7 +31,7 @@ export const ChartBox = ({ imgSrc, title, year, value, data }) => {
         </Styled.titleContainer>
         <div>
           <dt>{year}:</dt>
-          <dd>R$ {Math.round(value / 1000000)} milhões</dd>
+          <dd>{prefix + Math.round(value / 1000000) + suffix}</dd>
         </div>
         <a href="#">ver tudo</a>
       </Styled.halfContainer>
@@ -59,4 +58,6 @@ ChartBox.propTypes = {
   year: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  prefix: PropTypes.string.isRequired,
+  suffix: PropTypes.string.isRequired,
 };
